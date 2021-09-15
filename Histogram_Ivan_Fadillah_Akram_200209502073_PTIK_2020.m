@@ -22,3 +22,22 @@ figure(2)
 bar(0:255,c)
 grid on
 axis([0 10 0 m*n])
+
+%Histogram Equalisasi
+for k = 1 : 256
+    wb(k) = round (c(k)*255/(m*n));
+end
+figure(3)
+bar(0:255,wb)
+axis ([0 10 0 255])
+grid on
+
+c = Citra_3_bit;
+[n m] = size(c);
+
+for x = 1 : n
+    for y = 1 : n
+        ii = c(x,y);
+        c(x,y) = wb(ii+1);
+    end
+end
